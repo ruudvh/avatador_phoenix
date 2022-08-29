@@ -1,0 +1,26 @@
+<div class="header">
+  <div class="logo">
+      <a href="https://avatador.io/">
+        <img src={Routes.static_path(@conn, "/images/logo.png")} alt="Avatador Logo"/>
+      </a>
+  </div>
+  <h1>Avatador</h1>
+  <h2>1,000 avatar and identicon Speed Test</h2>
+
+  <div class="examples">
+    <%= for i <- 1..1000 do %>
+      <%= if rem(i, 2) == 1 do %>
+        <img src={"av/?name=#{i}&width=50"} alt={"Avatador Test #{i}"}/>
+      <% else %>
+        <img src={"id/?name=#{i}&width=50"} alt={"Identicon Test #{i}"}/>
+      <% end %>    
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<div class="footer">
+  <p>Made by <a href="https://ruud.is" rel="noopener" target="_blank">Ruud</a>.</p>
+  <p><a href="https://github.com/ruudvh/avatador" rel="noopener" target="_blank">Code on GitHub</a></p>
+</div>

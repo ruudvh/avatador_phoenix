@@ -1,0 +1,182 @@
+<div class="header">
+  <div class="logo">
+      <a href="https://avatador.io/">
+        <img src={Routes.static_path(@conn, "/images/logo.png")} alt="Avatador Logo"/>
+      </a>
+  </div>
+  <h1>Avatador</h1>
+  <h2>Easily generate avatars and identicons.</h2>
+  <p>Simple-to-use API with no limit or login. No data is stored, no monitoring, and no logging.</p>
+
+  <div class="examples">
+    <%= for avatar <- @data.avatar_list do%>
+      <%= raw avatar %>
+    <% end %>
+    <%= for identicon <- @data.identicon_list do%>
+      <%= raw identicon %>
+    <% end %>
+  </div>
+</div>
+
+<div class="quick">
+  <h2>Get Creating!</h2>
+  <p>All requests return an image stream to be used directly in a <code class="inline">&lt;img/&gt;</code> tag.</p>
+
+  <div class="show-block">
+    <div class="title">An avatar based on the name "John Doe".</div>
+    <div class="row">
+      <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John+Doe</span></code>
+      <div class="code-result">
+          <img src={Routes.avatar_path(@conn, :svg, name: "John Doe", width: "50")} width="25" alt={"Example Identicon"}/>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-block">
+    <div class="title">A black identicon based on the name "Jane Doe"</div>
+    <div class="row">
+      <code>https://avatadors.io/id/?<span class="param">background</span>=<span class="value">000000</span>&<span class="param">name</span>=<span class="value">Jane+Doe</span></code>
+      <div class="code-result">
+        <img src={Routes.identicon_path(@conn, :svg, name: "Jane Doe", width: "50", background: "000000")} width="25" alt={"Example Identicon"}/>
+      </div>
+    </div>
+  </div>    
+</div>
+
+<div class="options">
+  <h2>Options</h2>
+  <div class="options-block">
+    <h6>Name <code class="small inline">(name)</code></h6>
+    <div class="row">
+      <div class="col">  
+        <p>Name, title, phrase, or pretty much any other text to turn into initials.</p>
+        <p>If not provided will show an empty icon.</p>
+      </div>
+      <div class="col">
+        <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">Jane+Doe</span></code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Background Color <code class="small inline">(background)</code></h6>
+    <div class="row">
+      <div class="col">
+        <p>Background color in hex format, without "#", i.e. "D6D6D6".</p>
+        <p>If not provided will show a random color. Random colors are cached so the same name will always have the same color background.</p>
+        <p>Supports transparency; #RGB #RGBA #RRGGBB #RRGGBBAA</p>
+      </div>
+      <div class="col">
+        <code>https://avatadors.io/av/?<span class="param">background</span>=<span class="value">D6F8D5</span></code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Size <code class="small inline">(height width)</code></h6>
+    <div class="row">
+      <div class="col">
+        <p>Image size in pixels. Default: 500</p>
+        <p>Both values are optional, if only one is provided they are set equal.</p>
+      </div>
+      <div class="col">
+        <code>
+          https://avatadors.io/av/?<span class="param">height</span>=<span class="value">500</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">width</span>=<span class="value">500</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">height</span>=<span class="value">500</span>&<span class="param">width</span>=<span class="value">500</span>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Font <code class="small inline">(color font-size font-family bold)</code></h6>
+    <div class="row">
+      <div class="col">
+        <p>Font styling options.</p>
+        <p><code class="small inline">color</code> set the font color in hex format, without "#". Default: FFFFFF / white.</p>
+        <p><code class="small inline">font-size</code> font size in pixels. If nothing provided it will auto calculate.</p>
+        <p><code class="small inline">font-family</code> set the font family.</p>
+        <p><code class="small inline">bold</code> if set to true will <i class="bold">bold</i> the text.</p>
+      </div>
+      <div class="col">
+        <code>
+          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">color</span>=<span class="value">FFFFFF</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-size</span>=<span class="value">250</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-family</span>=<span class="value">Montoserrat</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">bold</span>=<span class="value">true</span>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Capatalize <code class="small inline">(caps)</code></h6>
+    <div class="row">
+      <div class="col">
+        <p>How do you want the text to be capatalized?</p>
+        <p><code class="small inline">1</code> all uppercase</p>
+        <p><code class="small inline">2</code> all lowercase</p>
+        <p><code class="small inline">3</code> leave as provided</p>
+      </div>
+      <div class="col">
+        <code>
+          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">caps</span>=<span class="value">1</span>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Rounding <code class="small inline">(is_rounded rounded)</code></h6>
+    <div class="row">
+      <div class="col">
+        <p>Prefer with rounded edges, or fully round?</p>
+        <p><code class="small inline">is_rounded</code> set to true to get a fully rounded image.</p>
+        <p><code class="small inline">rounded</code> provide a value in pixels if you want to customize the rounding.</p>
+      </div>
+      <div class="col">
+        <code>
+          https://avatadors.io/av/?<span class="param">is_rounded</span>=<span class="value">true</span>
+          <br>
+          https://avatadors.io/av/?<span class="param">rounded</span>=<span class="value">10</span>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-block">
+    <h6>Format </h6>
+    <div class="row">
+      <div class="col">
+        <p>By default all images are returned as SVG.</p>
+        <p>If you prefer PNG, include <code class="small inline">png</code> before the parameters.</p>
+        <p>PNG only supports identicons, and no rounding.</p>
+      </div>
+      <div class="col">
+        <code>
+          https://avatadors.io/id/png?<span class="param">background</span>=<span class="value">6E9C40</span>
+          <br>
+          https://avatadors.io/id/svg?<span class="param">background</span>=<span class="value">6E9C40</span>
+        </code>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="builder">
+  <h2>URL Builder</h2>
+</div>
+
+<hr>
+
+<div class="footer">
+  <p>Made by <a href="https://ruud.is" rel="noopener" target="_blank">Ruud</a>.</p>
+  <p><a href="https://github.com/ruudvh/avatador" rel="noopener" target="_blank">Code on GitHub</a></p>
+</div>
