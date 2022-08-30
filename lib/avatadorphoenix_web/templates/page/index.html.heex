@@ -172,6 +172,105 @@
 
 <div class="builder">
   <h2>URL Builder</h2>
+  <div class="row">
+    <div class="col">
+      <form onkeyup="form_change()" onchange="form_change()">
+        <div class="field-block">
+          Name:
+          <fieldset>
+            <label for="name">name</label> =
+            <input type="text" name="name" id="name" placeholder="..">
+          </fieldset>
+        </div>
+
+        <div class="field-block">
+          Background Color:
+          <fieldset>
+            <label for="background">background</label> =
+            <input type="color" name="background" id="background" value="#d41d8c" onchange="background_change()">
+            <input type="text" name="background_value" id="background_value" placeholder="#D41D8C" disabled>
+          </fieldset>
+        </div>
+
+        <div class="field-block">
+          Size:
+          <fieldset>
+            <label for="size">width</label> =
+            <input type="text" name="width" id="width" placeholder="500">
+          </fieldset>
+          <fieldset>
+            <label for="size">height</label> =
+            <input type="text" name="height" id="height" placeholder="500">
+          </fieldset>
+        </div>
+
+        <div class="field-block">
+          Font:
+          <fieldset>
+            <label for="font">color</label> =
+            <input type="color" name="color" id="color" value="#FFFFFF" onchange="color_change()">
+            <input type="text" name="color_value" id="color_value" placeholder="#FFFFFF" disabled>
+          </fieldset>
+          <fieldset>
+            <label for="font">font_size</label> =
+            <input type="text" name="font_size" id="font_size" placeholder="auto">
+          </fieldset>
+          <fieldset>
+            <label for="font">font_family</label> =
+            <input type="text" name="font_family" id="font_family" placeholder="montserrat">
+          </fieldset>
+        </div>
+
+        <div class="field-block">
+          Capatalize
+          <fieldset onchange="caps_change()">
+            <label for="font">caps</label> =
+            <input type="text" name="caps" id="caps" placeholder="1" disabled>
+            <br>
+            <input type="radio" id="caps1" value="1" name="caps">
+            <label for="caps1">1 All Uppercase</label><br>
+            <input type="radio" id="caps2" value="2" name="caps">
+            <label for="caps2">2 All Lowercase</label><br>
+            <input type="radio" id="caps3" value="3" name="caps">
+            <label for="caps3">3 Leave as is</label>
+          </fieldset>
+        </div>
+
+        <div class="field-block">
+          Rounding
+          <fieldset onchange="rounded_change()">
+            <label for="font">is_rounding</label> =
+            <input type="checkbox" name="is_rounded" id="is_rounded">
+            <input type="text" name="is_rounded_value" id="is_rounded_value" placeholder="false" disabled>
+          </fieldset>
+          <fieldset>
+            <label for="font">rounded</label> =
+            <input type="text" name="rounded" id="rounded" placeholder="auto">
+          </fieldset>
+        </div>
+
+      </form>
+    </div>
+    <div class="col">
+        <div class="output">
+          Avatar request:
+          <code>
+            https://avatadors.io/av/?<span id="output_av_html"></span>
+          </code>
+          <br>
+          <img src="av/" id="output_av" width="100" alt="Avatador URL Builder"/>
+        </div>
+
+        <div class="output">
+          Identicon request:
+          <code>
+            https://avatadors.io/id/?<span id="output_id_html"></span>
+          </code>
+          <br>
+          <img src="id/" id="output_id" width="100" alt="Identicon URL Builder"/>
+        </div>
+    </div>
+  </div>
 </div>
 
 <hr>
@@ -180,3 +279,73 @@
   <p>Made by <a href="https://ruud.is" rel="noopener" target="_blank">Ruud</a>.</p>
   <p><a href="https://github.com/ruudvh/avatador" rel="noopener" target="_blank">Code on GitHub</a></p>
 </div>
+
+<script>
+  function color_change() {
+    let value = document.getElementById("color").value;
+    document.getElementById("color_value").value = value;
+    form_change()
+  }
+
+  function background_change() {
+    let value = document.getElementById("background").value;
+    document.getElementById("background_value").value = value;
+    form_change()
+  }
+
+  function caps_change() {
+    let value = document.querySelector('input[name="caps"]:checked').value;
+    document.getElementById("caps").value = value;
+    form_change()
+  }
+
+  function rounded_change() {
+    let value = document.querySelector('input[name="is_rounded"]').checked;
+    document.getElementById("is_rounded_value").value = value;   
+    form_change()
+  }
+
+  function form_change() {
+      let name = document.getElementById("name").value;
+      let background = document.getElementById("background_value").value.substring(1); // Remove "#"
+      let width = document.getElementById("width").value;
+      let height = document.getElementById("height").value;
+      let color = document.getElementById("color_value").value.substring(1); // Remove "#"
+      let font_size = document.getElementById("font_size").value;
+      let font_family = document.getElementById("font_family").value;
+      let caps = document.getElementById('caps').value;
+      let is_rounded = document.getElementById('is_rounded_value').value;
+      let rounded = document.getElementById("rounded").value;
+
+      let inputs = {
+        name: name,
+        background: background,
+        width: width,
+        height: height,
+        color: color,
+        font_size: font_size,
+        font_family: font_family,
+        caps: caps,
+        is_rounded: is_rounded,
+        rounded: rounded,
+      };
+
+      let output_query = "";
+      let output_html = "";
+      
+      for (var key in inputs){
+        if (inputs.hasOwnProperty(key) && inputs[key] != "") {
+            output_query += "&" + key + "=" + inputs[key];
+            output_html += "&<span class=\"param\">" + key + "</span>=<span class=\"value\">" + inputs[key] + "</span>";
+        }
+      };
+
+      output_query = output_query.substring(1) // Remove first "&"
+      output_html = output_html.substring(1) // Remove first "&"
+
+      document.getElementById("output_av_html").innerHTML = output_html;
+      document.getElementById("output_av").src = "av/?" + output_query;
+      document.getElementById("output_id_html").innerHTML = output_html;
+      document.getElementById("output_id").src = "id/?" + output_query;
+  }
+</script>
