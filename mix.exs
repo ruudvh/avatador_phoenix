@@ -44,7 +44,7 @@ defmodule AvatadorPhoenix.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:avatador, path: "../avatador"} # Easy avatar creation
+      {:avatador, git: "https://github.com/ruudvh/avatador"} # Easy avatar creation
     ]
   end
 
