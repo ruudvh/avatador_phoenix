@@ -7,6 +7,7 @@
   <h1>Avatador</h1>
   <h2>Easily generate avatars and identicons.</h2>
   <p>Simple-to-use API with no limit or login. No data is stored, no monitoring, and no logging.</p>
+  <p>All requests return an image stream to be used directly in a <code class="inline">&lt;img/&gt;</code> tag.</p>
 
   <div class="examples">
     <%= for avatar <- @data.avatar_list do%>
@@ -19,25 +20,22 @@
 </div>
 
 <div class="quick">
-  <h2>Get Creating!</h2>
-  <p>All requests return an image stream to be used directly in a <code class="inline">&lt;img/&gt;</code> tag.</p>
-
   <div class="show-block">
-    <div class="title">An avatar based on the name "John Doe".</div>
+    <div class="title">An avatar based on the name "James Smith".</div>
     <div class="row">
-      <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John+Doe</span></code>
+      <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">James+Smith</span></code>
       <div class="code-result">
-          <img src={Routes.avatar_path(@conn, :svg, name: "John Doe", width: "50")} width="25" alt={"Example Identicon"}/>
+          <img src={Routes.avatar_path(@conn, :svg, name: "James Smith", width: "50")} width="30" alt={"Example Identicon"}/>
       </div>
     </div>
   </div>
 
   <div class="show-block">
-    <div class="title">A black identicon based on the name "Jane Doe"</div>
+    <div class="title">A black identicon based on the name "Maria Garcia"</div>
     <div class="row">
-      <code>https://avatadors.io/id/?<span class="param">background</span>=<span class="value">000000</span>&<span class="param">name</span>=<span class="value">Jane+Doe</span></code>
+      <code>https://avatadors.io/id/?<span class="param">background</span>=<span class="value">000000</span>&<span class="param">name</span>=<span class="value">Maria+Garcia</span></code>
       <div class="code-result">
-        <img src={Routes.identicon_path(@conn, :svg, name: "Jane Doe", width: "50", background: "000000")} width="25" alt={"Example Identicon"}/>
+        <img src={Routes.identicon_path(@conn, :svg, name: "Maria Garcia", width: "50", background: "000000")} width="30" alt={"Example Identicon"}/>
       </div>
     </div>
   </div>    
@@ -53,13 +51,13 @@
         <p>If not provided will show an empty icon.</p>
       </div>
       <div class="col">
-        <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">Jane+Doe</span></code>
+        <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">David+Doe</span></code>
       </div>
     </div>
   </div>
 
   <div class="options-block">
-    <h6>Background Color <code class="small inline">(background)</code></h6>
+    <h6>Color <code class="small inline">(background)</code></h6>
     <div class="row">
       <div class="col">
         <p>Background color in hex format, without "#", i.e. "D6D6D6".</p>
@@ -171,7 +169,7 @@
 </div>
 
 <div class="builder">
-  <h2>URL Builder</h2>
+  <h2>Get Creating!</h2>
   <div class="row">
     <div class="col">
       <form onkeyup="form_change()" onchange="form_change()">
@@ -184,7 +182,7 @@
         </div>
 
         <div class="field-block">
-          Background Color:
+          Color:
           <fieldset>
             <label for="background">background</label> =
             <input type="color" name="background" id="background" value="#d41d8c" onchange="background_change()">
@@ -221,7 +219,7 @@
           </fieldset>
         </div>
 
-        <div class="field-block">
+        <div class="field-block caps">
           Capatalize
           <fieldset onchange="caps_change()">
             <label for="font">caps</label> =
@@ -314,7 +312,7 @@
       let font_size = document.getElementById("font_size").value;
       let font_family = document.getElementById("font_family").value;
       let caps = document.getElementById('caps').value;
-      let is_rounded = document.getElementById('is_rounded_value').value;
+      let is_rounded = document.getElementById('is_rounded_value').value == "true" ? "true" : "";
       let rounded = document.getElementById("rounded").value;
 
       let inputs = {

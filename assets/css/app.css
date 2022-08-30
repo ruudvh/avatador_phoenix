@@ -198,13 +198,13 @@ hr {
 
 .container {
 	margin: 2rem auto;
-	max-width: 70.0rem;
+	max-width: 67.0rem;
 	padding: 0 2.0rem;
 	position: relative;
 }
 
 .examples {
-	margin: 2rem 0 0
+	margin: 2rem 0
 }
 
 .footer {
@@ -264,11 +264,11 @@ code.inline {
 }
 
 code span.param {
-	color: #A87847
+	color: #47A8A8
 }
 
 code span.value {
-	color: #6E9C40
+	color: #9C4040
 }
 
 .code-result {
@@ -299,7 +299,7 @@ fieldset {
 label {
 	display: inline-block;
 	margin-bottom: 0.5rem;
-	color: #A87847
+	color: #47A8A8
 }
 
 input[type=text],
@@ -313,17 +313,18 @@ select {
 	outline: none;
 	transition-property: none;
 	transition-duration: none;
-	color: #6E9C40
+	color: #9C4040
 }
 input[type=text]:disabled{
 	background-color:transparent;
 	padding: 0;
 	border: 1px solid transparent;
+	height: unset;
 }
 input[type=text]:focus,
 textarea:focus,
 select:focus {
-	border-color: #ef7ead;
+	border-color: #9C4040;
 }
 textarea {
 	max-width: 300px;
@@ -331,7 +332,7 @@ textarea {
 }
 input[type=text],
 select {
-	height: 34px;
+	height: 30px;
 }
 select {
 	font-size: 0.875rem;
@@ -375,33 +376,12 @@ input[type=radio]:checked {
 	border-color: white;
 	background-color: #ef7ead;
 }
-button {
-	display: block;
-	margin: 3em auto;
-	padding: 0.5rem 2rem;
-	font-size: 125%;
-	color: white;
-	border: none;
-	border-radius: 0.25rem;
-	background-color: #ef7ead;
-	outline: none;
-	box-shadow: 0 0.4rem 0.1rem -0.3rem rgba(0, 0, 0, 0.1);
-	transform: perspective(300px) scale(0.95) translateZ(0);
-	transform-style: preserve-3d;
-	transition-property: none;
-	transition-duration: none;
+input[type=color] {
+	width: 30px;
 }
-button:hover {
-	cursor: pointer;
-	background-color: #ff96c8;
-	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-	transform: scale(1.1) rotateX(0);
+.caps label {
+	margin:0
 }
-button:active {
-	background-color: #ef7ead;
-	transform: scale(1.05) rotateX(-10deg);
-}
-
 /* GitHub Corner Kitty */
 .github-corner:hover .octo-arm {
 	animation: octocat-wave 560ms ease-in-out
