@@ -6,7 +6,7 @@ set -o errexit
 mix deps.get --only prod
 MIX_ENV=prod mix compile
 
-# Compile assetsbi
+# Compile assets
 MIX_ENV=prod mix assets.deploy
 
 # Build the release and overwrite the existing release directory
