@@ -26,10 +26,10 @@ if config_env() == :prod do
       """
 
   host = System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost"
-  port = 80
+  port = System.get_env("PORT") || 4000
 
   config :avatadorphoenix, AvatadorPhoenixWeb.Endpoint,
-    url: [host: host, port: port],
+    url: [host: host, port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
