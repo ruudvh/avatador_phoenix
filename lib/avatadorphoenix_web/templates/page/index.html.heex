@@ -23,7 +23,7 @@
   <div class="show-block">
     <div class="title">An avatar based on the name "James Smith".</div>
     <div class="row">
-      <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">James+Smith</span></code>
+      <code>https://avatador.io/av/?<span class="param">name</span>=<span class="value">James+Smith</span></code>
       <div class="code-result">
           <img src={Routes.avatar_path(@conn, :svg, name: "James Smith", width: "50")} width="30" alt={"Example Identicon"}/>
       </div>
@@ -33,7 +33,7 @@
   <div class="show-block">
     <div class="title">A black identicon based on the name "Maria Garcia"</div>
     <div class="row">
-      <code>https://avatadors.io/id/?<span class="param">background</span>=<span class="value">000000</span>&<span class="param">name</span>=<span class="value">Maria+Garcia</span></code>
+      <code>https://avatador.io/id/?<span class="param">background</span>=<span class="value">000000</span>&<span class="param">name</span>=<span class="value">Maria+Garcia</span></code>
       <div class="code-result">
         <img src={Routes.identicon_path(@conn, :svg, name: "Maria Garcia", width: "50", background: "000000")} width="30" alt={"Example Identicon"}/>
       </div>
@@ -51,7 +51,7 @@
         <p>If not provided will show an empty icon.</p>
       </div>
       <div class="col">
-        <code>https://avatadors.io/av/?<span class="param">name</span>=<span class="value">David+Doe</span></code>
+        <code>https://avatador.io/av/?<span class="param">name</span>=<span class="value">David+Doe</span></code>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
         <p>Supports transparency; #RGB #RGBA #RRGGBB #RRGGBBAA</p>
       </div>
       <div class="col">
-        <code>https://avatadors.io/av/?<span class="param">background</span>=<span class="value">D6F8D5</span></code>
+        <code>https://avatador.io/av/?<span class="param">background</span>=<span class="value">D6F8D5</span></code>
       </div>
     </div>
   </div>
@@ -79,11 +79,11 @@
       </div>
       <div class="col">
         <code>
-          https://avatadors.io/av/?<span class="param">height</span>=<span class="value">500</span>
+          https://avatador.io/av/?<span class="param">height</span>=<span class="value">500</span>
           <br>
-          https://avatadors.io/av/?<span class="param">width</span>=<span class="value">500</span>
+          https://avatador.io/av/?<span class="param">width</span>=<span class="value">500</span>
           <br>
-          https://avatadors.io/av/?<span class="param">height</span>=<span class="value">500</span>&<span class="param">width</span>=<span class="value">500</span>
+          https://avatador.io/av/?<span class="param">height</span>=<span class="value">500</span>&<span class="param">width</span>=<span class="value">500</span>
         </code>
       </div>
     </div>
@@ -101,13 +101,13 @@
       </div>
       <div class="col">
         <code>
-          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">color</span>=<span class="value">FFFFFF</span>
+          https://avatador.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">color</span>=<span class="value">FFFFFF</span>
           <br>
-          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-size</span>=<span class="value">250</span>
+          https://avatador.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-size</span>=<span class="value">250</span>
           <br>
-          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-family</span>=<span class="value">Montoserrat</span>
+          https://avatador.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">font-family</span>=<span class="value">Montoserrat</span>
           <br>
-          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">bold</span>=<span class="value">true</span>
+          https://avatador.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">bold</span>=<span class="value">true</span>
         </code>
       </div>
     </div>
@@ -124,7 +124,7 @@
       </div>
       <div class="col">
         <code>
-          https://avatadors.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">caps</span>=<span class="value">1</span>
+          https://avatador.io/av/?<span class="param">name</span>=<span class="value">John</span>&<span class="param">caps</span>=<span class="value">1</span>
         </code>
       </div>
     </div>
@@ -140,9 +140,9 @@
       </div>
       <div class="col">
         <code>
-          https://avatadors.io/av/?<span class="param">is_rounded</span>=<span class="value">true</span>
+          https://avatador.io/av/?<span class="param">is_rounded</span>=<span class="value">true</span>
           <br>
-          https://avatadors.io/av/?<span class="param">rounded</span>=<span class="value">10</span>
+          https://avatador.io/av/?<span class="param">rounded</span>=<span class="value">10</span>
         </code>
       </div>
     </div>
@@ -158,9 +158,9 @@
       </div>
       <div class="col">
         <code>
-          https://avatadors.io/id/png?<span class="param">background</span>=<span class="value">6E9C40</span>
+          https://avatador.io/id/png?<span class="param">background</span>=<span class="value">6E9C40</span>
           <br>
-          https://avatadors.io/id/svg?<span class="param">background</span>=<span class="value">6E9C40</span>
+          https://avatador.io/id/svg?<span class="param">background</span>=<span class="value">6E9C40</span>
         </code>
       </div>
     </div>
@@ -253,7 +253,7 @@
         <div class="output">
           Avatar request:
           <code>
-            https://avatadors.io/av/?<span id="output_av_html"></span>
+            https://avatador.io/av/?<span id="output_av_html"></span>
           </code>
           <br>
           <img src="av/" id="output_av" width="100" alt="Avatador URL Builder"/>
@@ -262,7 +262,7 @@
         <div class="output">
           Identicon request:
           <code>
-            https://avatadors.io/id/?<span id="output_id_html"></span>
+            https://avatador.io/id/?<span id="output_id_html"></span>
           </code>
           <br>
           <img src="id/" id="output_id" width="100" alt="Identicon URL Builder"/>
